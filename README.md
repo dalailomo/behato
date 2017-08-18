@@ -9,10 +9,24 @@ Quick behavioural testing tool using [behat](http://behat.org/en/latest/) and [v
 
 ## Installation
 
-First require the dependencies: 
+Create a composer.json file with the following:
+
+```json
+{
+  "config": {
+    "bin-dir": "bin/"
+  },
+  "minimum-stability": "dev",
+  "require": {
+    "dalailomo/behato": "dev-master"
+  }
+}
+```
+
+The require dependencies 
 
 ```bash
-$ composer require dalailomo/behato
+$ composer install
 ```
 
 Then, install the selenium server:
