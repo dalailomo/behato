@@ -1,0 +1,4 @@
+bin/behat
+vendor/
+node_modules/
+behat.yml

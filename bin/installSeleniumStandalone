@@ -1,0 +1,30 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use React\ChildProcess\Process;
+use React\EventLoop\Factory as EventFactory;
+
+$wd = __DIR__ . '/../';
+
+$loop = EventFactory::create();
+
+$commands = [
+    'npm install',
+    'node_modules/selenium-standalone/bin/selenium-standalone install'
+];
+
+foreach ($commands as $command) {
+    $process = new Process($command, $wd);
+    $process->start($loop);
+
+    $process->stdout->on('data', function($output) {
+        echo $output . PHP_EOL;
+    });
+    $process->stderr->on('data', function($output) {
+        echo $output . PHP_EOL;
+    });
+
+    $loop->run();
+}
